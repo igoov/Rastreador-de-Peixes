@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastreador de Peixes Stardew Valley</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1><span class="pixel-text">Rastreador de Peixes</span></h1>
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progressFill"></div>
+            <span class="progress-text" id="progressText">0/0 peixes coletados</span>
+        </div>
+
+        <div class="controls">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="river">Rio</button>
+                <button class="filter-btn" data-filter="lake">Lago</button>
+                <button class="filter-btn" data-filter="ocean">Oceano</button>
+                <button class="filter-btn" data-filter="night">Noite</button>
+                <button class="filter-btn" data-filter="crab">Covos</button>
+                <button class="filter-btn" data-filter="specialty">Especializados</button>
+            </div>
+            <div class="search-and-filter">
+                <input type="text" id="searchInput" placeholder="Buscar peixe ou local...">
+                <button id="advancedFiltersBtn" class="advanced-filter-btn">Filtros Avançados</button>
+            </div>
+        </div>
+
+        <div class="fish-grid" id="fishGrid">
+            <!-- Cards de peixes serão injetados aqui pelo JavaScript -->
+        </div>
+    </div>
+
+    <!-- Modal de Filtros Avançados -->
+    <div id="advancedFiltersModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Filtros Avançados</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="filter-group">
+                    <label for="locationFilter">Localização:</label>
+                    <select id="locationFilter">
+                        <option value="">Todas as localizações</option>
+                        <option value="rios">Rios</option>
+                        <option value="lagos">Lagos da Montanha</option>
+                        <option value="oceano">Oceano</option>
+                        <option value="bosque">Bosque Secreto</option>
+                        <option value="minas">Minas</option>
+                        <option value="deserto">Deserto Calico</option>
+                        <option value="esgotos">Esgotos</option>
+                        <option value="praia">Praia</option>
+                        <option value="agua doce">Água Doce</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="weatherFilter">Clima:</label>
+                    <select id="weatherFilter">
+                        <option value="">Todos os climas</option>
+                        <option value="qualquer">Qualquer clima</option>
+                        <option value="chuva">Apenas chuva</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="seasonFilter">Estação:</label>
+                    <select id="seasonFilter">
+                        <option value="">Todas as estações</option>
+                        <option value="primavera">Primavera</option>
+                        <option value="verão">Verão</option>
+                        <option value="outono">Outono</option>
+                        <option value="inverno">Inverno</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="difficultyFilter">Dificuldade:</label>
+                    <select id="difficultyFilter">
+                        <option value="">Todas as dificuldades</option>
+                        <option value="fácil">Fácil</option>
+                        <option value="médio">Médio</option>
+                        <option value="difícil">Difícil</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="statusFilter">Status:</label>
+                    <select id="statusFilter">
+                        <option value="">Todos os peixes</option>
+                        <option value="caught">Apenas capturados</option>
+                        <option value="not-caught">Apenas não capturados</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="clearFilters" class="btn">Limpar Filtros</button>
+                <button id="applyFilters" class="btn primary">Aplicar Filtros</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal do Mapa -->
+    <div id="mapModal" class="modal">
+        <div class="modal-content map-modal-content">
+            <div class="modal-header">
+                <h3 id="mapModalTitle">Localização no Mapa</h3>
+                <span class="close" id="closeMapModal">&times;</span>
+            </div>
+            <div class="modal-body map-modal-body">
+                <div id="mapContainer">
+                    <img src="stardew_valley_map.png" alt="Mapa de Stardew Valley" id="mapImage">
+                    <canvas id="mapCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
